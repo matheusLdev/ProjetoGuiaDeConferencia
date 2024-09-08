@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import {Container, ContainerMain} from './styles';
 import Header from '../../components/Header';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
-import {RootStackParamList} from '../../routes/types';
+// import {NavigationProp, useNavigation} from '@react-navigation/native';
+// import {RootStackParamList} from '../../routes/types';
 import {ScrollView} from 'react-native';
 import {InputText} from '../../components/InputText';
 import Button from '../../components/Button';
 import Colors from '../../styles/Colors';
 
 export const ConferenceGuide = () => {
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  // const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [form, setForm] = useState({
     initialRoulette: '',
     finalRoulette: '',
@@ -33,8 +33,8 @@ export const ConferenceGuide = () => {
   return (
     <ContainerMain>
       <Header ButtonReturn={true} TitleHeader="Registrar Nova Conferência" />
-      <ScrollView>
-        <Container>
+      <Container>
+        <ScrollView>
           <InputText
             label="Roleta Inicial - RI"
             id="initialRoulette"
@@ -103,8 +103,8 @@ export const ConferenceGuide = () => {
             text="EFETUAR CONFERÊNCIA"
             onPress={handleSubmit}
           />
-        </Container>
-      </ScrollView>
+        </ScrollView>
+      </Container>
     </ContainerMain>
   );
 };

@@ -3,6 +3,7 @@ import Colors from '../../styles/Colors';
 
 export const ButtonStyled = styled.TouchableOpacity<{color: string}>`
   background-color: ${({color}) => color || Colors.yellow};
+  min-width: 140px;
   height: 50px;
   padding: 10px 20px;
   margin: 10px;

@@ -1,23 +1,39 @@
 import React from 'react';
-import {TextInputProps} from 'react-native';
-import {Container, Label, StyledTextInput} from './styles';
+import {ImageSourcePropType, TextInputProps} from 'react-native';
+import {
+  Container,
+  IconImg,
+  IconWrapper,
+  InputWrapper,
+  Label,
+  StyledTextInput,
+} from './styles';
 
 interface InputTextProps extends TextInputProps {
   label: string;
   id: string;
   placeholder: string;
+  icon?: ImageSourcePropType;
 }
 
 export const InputText: React.FC<InputTextProps> = ({
   label,
   placeholder,
   id,
+  icon,
   ...rest
 }) => {
   return (
     <Container>
       <Label>{label}</Label>
-      <StyledTextInput placeholder={placeholder} testID={id} {...rest} />
+      <InputWrapper>
+        <StyledTextInput placeholder={placeholder} testID={id} {...rest} />
+        {icon && (
+          <IconWrapper onPress={() => {}}>
+            <IconImg source={icon} />
+          </IconWrapper>
+        )}
+      </InputWrapper>
     </Container>
   );
 };
