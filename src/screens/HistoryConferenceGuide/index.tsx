@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {styles} from './styles';
+import Header from '../../components/Header';
+import {ContainerMain} from './styles';
 
 export const HistoryConferenceGuide = () => {
   return (
-    <View style={styles.container}>
-      <Text>History of Conference Guide</Text>
-    </View>
+    <ContainerMain>
+      <Header ButtonReturn={true} TitleHeader="Histórico de Conferência" />
+    </ContainerMain>
   );
 };
