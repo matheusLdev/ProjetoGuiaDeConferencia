@@ -7,9 +7,11 @@ import {ScrollView} from 'react-native';
 import {InputText} from '../../components/InputText';
 import Button from '../../components/Button';
 import Colors from '../../styles/Colors';
+import {useAlert} from '../../hooks/useAlert';
 
 export const ConferenceGuide = () => {
   // const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const {showAlert, AlertComponent} = useAlert();
   const [form, setForm] = useState({
     initialRoulette: '',
     finalRoulette: '',
@@ -27,11 +29,12 @@ export const ConferenceGuide = () => {
   };
 
   const handleSubmit = () => {
-    console.log('Registrei nova conferência');
+    showAlert('Conferência registrada com sucesso!', 'success');
   };
 
   return (
     <ContainerMain>
+      <AlertComponent />
       <Header ButtonReturn={true} TitleHeader="Registrar Nova Conferência" />
       <Container>
         <ScrollView>
