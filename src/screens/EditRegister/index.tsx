@@ -6,9 +6,11 @@ import Button from '../../components/Button';
 import Colors from '../../styles/Colors';
 import {InputText} from '../../components/InputText';
 import {useAlert} from '../../hooks/useAlert';
+import {useNavigation} from '@react-navigation/native';
 
 export const EditRegister = () => {
   const {showAlert, AlertComponent} = useAlert();
+  const {goBack} = useNavigation();
 
   const updateInfoUser = () => {
     showAlert('Cadastro atualizado com sucesso', 'success');
@@ -40,7 +42,11 @@ export const EditRegister = () => {
           />
         </ContainerInfo>
         <ContainerBtn>
-          <Button text="VOLTAR" onPress={() => {}} color={Colors.off_white} />
+          <Button
+            text="VOLTAR"
+            onPress={() => goBack()}
+            color={Colors.off_white}
+          />
           <Button text="SALVAR" onPress={updateInfoUser} />
         </ContainerBtn>
       </Container>

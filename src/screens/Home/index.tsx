@@ -12,7 +12,7 @@ import Button from '../../components/Button';
 import {RootStackParamList} from '../../routes/types';
 
 export const Home = () => {
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const {navigate} = useNavigation<NavigationProp<RootStackParamList>>();
 
   return (
     <ContainerMain>
@@ -21,15 +21,15 @@ export const Home = () => {
         <ContainerNavigation>
           <Button
             text="REGISTRAR NOVA CONFERÊNCIA"
-            onPress={() => navigation.navigate('ConferenceGuide')}
+            onPress={() => navigate('ConferenceGuide')}
           />
           <Button
             text="HISTÓRICO DE CONFERÊNCIA"
-            onPress={() => navigation.navigate('HistoryConferenceGuide')}
+            onPress={() => navigate('HistoryConferenceGuide')}
           />
           <Button
             text="EDITAR CADASTRO"
-            onPress={() => navigation.navigate('EditRegister')}
+            onPress={() => navigate('EditRegister')}
           />
         </ContainerNavigation>
         <InfoText>

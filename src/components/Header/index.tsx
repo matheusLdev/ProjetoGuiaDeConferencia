@@ -6,12 +6,12 @@ import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native';
 
 const Header = ({ButtonReturn, TitleHeader}: HeaderProps) => {
-  const navigation = useNavigation();
+  const {goBack} = useNavigation();
 
   return (
     <HeaderContainer>
       {ButtonReturn && (
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => goBack()}>
           <ImgStyled source={Arrow} />
         </TouchableOpacity>
       )}
