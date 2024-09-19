@@ -8,3 +8,9 @@ export type ButtonProps = {
   text: string;
   onPress: () => void;
 };
+
+export type User = {
+  name: string;
+  surname: string;
+  ticketPrice: string;
+};

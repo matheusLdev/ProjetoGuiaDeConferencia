@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ImageSourcePropType, TextInputProps} from 'react-native';
 import {
   Container,
@@ -13,6 +13,7 @@ interface InputTextProps extends TextInputProps {
   label: string;
   id: string;
   placeholder: string;
+  editable?: boolean;
   icon?: ImageSourcePropType;
 }
 
@@ -21,15 +22,35 @@ export const InputText: React.FC<InputTextProps> = ({
   placeholder,
   id,
   icon,
+  editable = true,
   ...rest
 }) => {
+  const [edit, setEdit] = useState<boolean>(false);
+
   return (
     <Container>
       <Label>{label}</Label>
-      <InputWrapper>
-        <StyledTextInput placeholder={placeholder} testID={id} {...rest} />
+      <InputWrapper
+        style={{
+          backgroundColor: icon
+            ? edit
+              ? '#fff'
+              : '#f0f0f0'
+            : editable
+            ? '#fff'
+            : '#f0f0f0',
+        }}>
+        <StyledTextInput
+          placeholder={placeholder}
+          testID={id}
+          editable={icon ? edit : editable}
+          {...rest}
+        />
         {icon && (
-          <IconWrapper onPress={() => {}}>
+          <IconWrapper
+            onPress={() => {
+              setEdit(prev => !prev);
+            }}>
             <IconImg source={icon} />
           </IconWrapper>
         )}
