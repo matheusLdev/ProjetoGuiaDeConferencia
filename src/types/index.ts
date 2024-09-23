@@ -12,5 +12,17 @@ export type ButtonProps = {
 export type User = {
   name: string;
   surname: string;
-  ticketPrice: string;
+  ticketPrice?: number;
+};
+
+export type ConferenceInfo = {
+  initialRoulette?: number;
+  finalRoulette?: number;
+  totalPassenger?: number;
+  gratuity?: number;
+  transportVoucher?: number;
+  noCard?: number;
+  normalPassenger?: number;
+  ticketPrice?: number;
+  cashInHand?: number;
 };
