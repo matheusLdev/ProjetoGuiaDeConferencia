@@ -17,7 +17,7 @@ export const EditRegister = () => {
   const [user, setUser] = useState<User>({
     name: '',
     surname: '',
-    ticketPrice: '',
+    ticketPrice: undefined,
   });
 
   useEffect(() => {
@@ -41,14 +41,14 @@ export const EditRegister = () => {
   };
 
   const updateInfoUser = async () => {
-    const cleanedTicketPrice = cleanFormatCurrency(user.ticketPrice);
-    const updatedUser = {
-      ...user,
-      ticketPrice: cleanedTicketPrice,
-    };
+    if (user.ticketPrice) {
+      user.ticketPrice = cleanFormatCurrency(user.ticketPrice.toString());
+    }
+
     try {
-      await AsyncStorage.setItem('user', JSON.stringify(updatedUser));
+      await AsyncStorage.setItem('user', JSON.stringify(user));
       showAlert('Cadastro atualizado com sucesso', 'success');
+
       goBack();
     } catch (error) {
       showAlert('Erro ao atualizar cadastro', 'error');
@@ -82,7 +82,9 @@ export const EditRegister = () => {
             label="Valor da Passagem"
             placeholder="Digite o valor da passagem"
             keyboardType="numeric"
-            defaultValue={formatCurrency(user?.ticketPrice) || ''}
+            defaultValue={
+              user.ticketPrice ? formatCurrency(user?.ticketPrice) : ''
+            }
             icon={EditIcon}
             onChangeText={text => handleInputChange('ticketPrice', text)}
           />
