@@ -132,20 +132,23 @@ export const ConferenceGuide = () => {
 
   const handleSubmit = async () => {
     try {
-      const newConference = {
-        id: uuid.v4(),
-        date: new Date().toISOString(),
-        ...form,
-      };
-      console.log('Conferência salva:', newConference);
-
-      const existingConferences = await AsyncStorage.getItem('conferences');
-      const conferences = existingConferences
-        ? JSON.parse(existingConferences)
+      const storedConferences = await AsyncStorage.getItem('conferences');
+      const conferences = storedConferences
+        ? JSON.parse(storedConferences)
         : [];
 
-      conferences.push(newConference);
+      if (conferences.length >= 10) {
+        showAlert('Você atingiu o limite de conferência guardada.', 'error');
+        return;
+      }
 
+      const newConference = {
+        id: uuid.v4(),
+        date: new Date().toLocaleString('pt-BR'),
+        ...form,
+      };
+
+      conferences.push(newConference);
       await AsyncStorage.setItem('conferences', JSON.stringify(conferences));
       showAlert('Conferência registrada com sucesso!', 'success');
       setForm({
