@@ -26,3 +26,17 @@ export type ConferenceInfo = {
   ticketPrice?: number;
   cashInHand?: number;
 };
+
+export type Conference = {
+  initialRoulette?: number;
+  finalRoulette?: number;
+  totalPassenger?: number;
+  gratuity?: number;
+  transportVoucher?: number;
+  noCard?: number;
+  normalPassenger?: number;
+  ticketPrice?: number;
+  cashInHand?: number;
+  id: string;
+  date: string;
+};
