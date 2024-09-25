@@ -45,6 +45,14 @@ export const EditRegister = () => {
       user.ticketPrice = cleanFormatCurrency(user.ticketPrice.toString());
     }
 
+    if (user.name) {
+      user.name = user.name.trim();
+    }
+
+    if (user.surname) {
+      user.surname = user.surname.trim();
+    }
+
     try {
       await AsyncStorage.setItem('user', JSON.stringify(user));
       showAlert('Cadastro atualizado com sucesso', 'success');
