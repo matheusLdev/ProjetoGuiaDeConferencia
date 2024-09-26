@@ -8,39 +8,58 @@ import {Conference, User} from '../../types';
 import {FlatList, View} from 'react-native';
 import {dateFormat, formatDate} from '../../utils/Date';
 import {useAlert} from '../../hooks/useAlert';
+import {
+  NavigationProp,
+  useFocusEffect,
+  useNavigation,
+} from '@react-navigation/native';
+import {RootStackParamList} from '../../routes/types';
 
 export const HistoryConferenceGuide = () => {
   const [user, setUser] = useState<User>();
   const [conferences, setConferences] = useState<Conference[]>([]);
+  const {navigate} = useNavigation<NavigationProp<RootStackParamList>>();
   const {showAlert, AlertComponent} = useAlert();
 
   useEffect(() => {
     const loadData = async () => {
       const userResponse = await AsyncStorage.getItem('user');
-      const conferencesResponse = await AsyncStorage.getItem('conferences');
-
       if (userResponse) {
         setUser(JSON.parse(userResponse));
       }
-      if (conferencesResponse) {
-        const loadedConferences: Conference[] = JSON.parse(conferencesResponse);
-        loadedConferences.sort((a, b) => {
-          const dateA = new Date(dateFormat(a.date));
-          const dateB = new Date(dateFormat(b.date));
-          return dateB.getTime() - dateA.getTime();
-        });
-
-        setConferences(loadedConferences);
-      }
     };
-
     loadData();
   }, []);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const loadConferences = async () => {
+        const conferencesResponse = await AsyncStorage.getItem('conferences');
+        if (conferencesResponse) {
+          const loadedConferences: Conference[] =
+            JSON.parse(conferencesResponse);
+          loadedConferences.sort((a, b) => {
+            const dateA = new Date(dateFormat(a.date));
+            const dateB = new Date(dateFormat(b.date));
+            return dateB.getTime() - dateA.getTime();
+          });
+
+          setConferences(loadedConferences);
+        }
+      };
+
+      loadConferences();
+    }, []),
+  );
 
   const clearHistory = async () => {
     await AsyncStorage.removeItem('conferences');
     setConferences([]);
     showAlert('As conferências foram excluídas com sucesso.', 'success');
+  };
+
+  const goSeeConference = (conference: Conference) => {
+    navigate('SeeConferenceGuide', {conference});
   };
 
   return (
@@ -62,9 +81,7 @@ export const HistoryConferenceGuide = () => {
           renderItem={({item}: {item: Conference}) => (
             <Button
               text={`Guia de conferência - ${formatDate(item.date)}`}
-              onPress={() => {
-                console.log('Conferência ID: ', item.id);
-              }}
+              onPress={() => goSeeConference(item)}
             />
           )}
         />
