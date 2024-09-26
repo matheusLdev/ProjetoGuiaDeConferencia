@@ -164,7 +164,6 @@ export const ConferenceGuide = () => {
       });
       navigate('Home');
     } catch (error) {
-      console.error(error);
       showAlert(
         'Erro ao salvar a conferência, por favor, tente novamente',
         'error',
