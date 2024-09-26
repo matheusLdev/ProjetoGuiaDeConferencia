@@ -5,6 +5,7 @@ import {Home} from '../screens/Home';
 import {EditRegister} from '../screens/EditRegister';
 import {ConferenceGuide} from '../screens/ConferenceGuide';
 import {HistoryConferenceGuide} from '../screens/HistoryConferenceGuide';
+import {SeeConferenceGuide} from '../screens/HistoryConferenceGuide/SeeConferenceGuide';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,10 @@ export const Routes = () => {
         <Stack.Screen
           name="HistoryConferenceGuide"
           component={HistoryConferenceGuide}
+        />
+        <Stack.Screen
+          name="SeeConferenceGuide"
+          component={SeeConferenceGuide}
         />
       </Stack.Navigator>
     </NavigationContainer>
