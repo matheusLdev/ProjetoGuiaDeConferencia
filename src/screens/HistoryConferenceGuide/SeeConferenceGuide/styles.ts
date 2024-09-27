@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import styled from 'styled-components/native';
 import Colors from '../../../styles/Colors';
 
@@ -18,14 +17,14 @@ export const Container = styled.View`
 `;
 
 export const ContainerContent = styled.View`
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   border-radius: 20px;
   elevation: 1;
-  border: 1px solid #B3B3B3;
+  border: 1px solid #b3b3b3;
   padding: 20px;
   margin: 20px;
   justify-content: space-between;
-`
+`;
 
 export const InfoText = styled.Text`
   color: ${Colors.black};

@@ -14,6 +14,7 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 import {RootStackParamList} from '../../routes/types';
+import Colors from '../../styles/Colors';
 
 export const HistoryConferenceGuide = () => {
   const [user, setUser] = useState<User>();
@@ -93,9 +94,15 @@ export const HistoryConferenceGuide = () => {
         />
 
         <Button
-          text="LIMPAR HISTÓRICO"
-          onPress={clearHistory}
-          color="#cb00007f"
+          text={
+            conferences.length > 0
+              ? 'LIMPAR HISTÓRICO'
+              : 'VOLTAR PARA PÁGINA INICIAL'
+          }
+          onPress={
+            conferences.length > 0 ? clearHistory : () => navigate('Home')
+          }
+          color={conferences.length > 0 ? '#cb00007f' : Colors.light_yellow}
         />
       </Container>
     </ContainerMain>
