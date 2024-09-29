@@ -1,15 +1,20 @@
 import React from 'react';
 import {Routes} from './routes';
 import {Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
 (Text as any).defaultProps = {
   ...(Text as any).defaultProps,
-  allowFontScaling: true, // Pode ajustar para true se quiser limitar com maxFontSizeMultiplier
-  maxFontSizeMultiplier: 1.2, // Limita o aumento da fonte
+  allowFontScaling: true,
+  maxFontSizeMultiplier: 1.5,
 };
 
 const App = (): React.JSX.Element => {
-  return <Routes />;
+  return (
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
+  );
 };
 
 export default App;
