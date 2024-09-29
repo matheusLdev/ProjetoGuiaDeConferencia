@@ -21,6 +21,7 @@ import {
 import Colors from '../../../styles/Colors';
 import {formatCurrency} from '../../../utils/Currency';
 import {RootStackParamList} from '../../../routes/types';
+import {ScrollView} from 'react-native';
 
 type ConferenceDetailsRoute = RouteProp<
   {params: {conference: Conference}},
@@ -62,38 +63,41 @@ export const SeeConferenceGuide = () => {
         }`}
       />
       <Container>
-        <ContainerContent>
-          {conference && (
-            <>
-              <InfoText>
-                Roleta Inicial - RI = {conference.initialRoulette}
-              </InfoText>
-              <InfoText>
-                Roleta Final - RF = {conference.finalRoulette}
-              </InfoText>
-              <InfoText>
-                Total de Passageiro - PT = {conference.totalPassenger}
-              </InfoText>
-              <InfoText>Gratuidade - GR = {conference.gratuity}</InfoText>
-              <InfoText>
-                Vale Transporte - VT = {conference.transportVoucher}
-              </InfoText>
-              <InfoText>Sem Cartão - SC = {conference.noCard}</InfoText>
-              <InfoText>
-                Passageiro Normal - P = {conference.normalPassenger}
-              </InfoText>
-              <InfoText>
-                Valor da Passagem ={' '}
-                {conference.ticketPrice &&
-                  formatCurrency(conference.ticketPrice)}
-              </InfoText>
-              <InfoText>
-                Dinheiro em caixa ={' '}
-                {conference.cashInHand && formatCurrency(conference.cashInHand)}
-              </InfoText>
-            </>
-          )}
-        </ContainerContent>
+        <ScrollView>
+          <ContainerContent>
+            {conference && (
+              <>
+                <InfoText>
+                  Roleta Inicial - RI = {conference.initialRoulette}
+                </InfoText>
+                <InfoText>
+                  Roleta Final - RF = {conference.finalRoulette}
+                </InfoText>
+                <InfoText>
+                  Total de Passageiro - PT = {conference.totalPassenger}
+                </InfoText>
+                <InfoText>Gratuidade - GR = {conference.gratuity}</InfoText>
+                <InfoText>
+                  Vale Transporte - VT = {conference.transportVoucher}
+                </InfoText>
+                <InfoText>Sem Cartão - SC = {conference.noCard}</InfoText>
+                <InfoText>
+                  Passageiro Normal - P = {conference.normalPassenger}
+                </InfoText>
+                <InfoText>
+                  Valor da Passagem ={' '}
+                  {conference.ticketPrice &&
+                    formatCurrency(conference.ticketPrice)}
+                </InfoText>
+                <InfoText>
+                  Dinheiro em caixa ={' '}
+                  {conference.cashInHand &&
+                    formatCurrency(conference.cashInHand)}
+                </InfoText>
+              </>
+            )}
+          </ContainerContent>
+        </ScrollView>
         <ContainerBtn>
           <Button
             text="VOLTAR"
