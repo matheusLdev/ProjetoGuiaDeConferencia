@@ -53,10 +53,7 @@ export const Welcome = () => {
   return (
     <ContainerMain>
       <AlertComponent />
-      <Header
-        ButtonReturn={false}
-        TitleHeader="Bem vindo ao Guia de Conferência"
-      />
+      <Header ButtonReturn={false} TitleHeader="Faça seu cadastro" />
       <Container>
         <ContainerInfo>
           <InputText
