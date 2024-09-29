@@ -1,4 +1,4 @@
-package com.projetoguiadeconferencia
+package com.guiadeconferencia
 
 import android.app.Application
 import com.facebook.react.PackageList
