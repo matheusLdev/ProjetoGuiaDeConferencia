@@ -43,5 +43,5 @@ const AlertContainer = styled.View<{type: 'success' | 'error'}>`
 
 const AlertText = styled.Text`
   color: ${Colors.light_gray};
-  font-size: 16px;
+  font-size: 14px;
 `;

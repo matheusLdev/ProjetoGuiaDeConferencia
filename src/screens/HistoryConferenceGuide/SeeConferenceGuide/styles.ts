@@ -28,7 +28,7 @@ export const ContainerContent = styled.View`
 
 export const InfoText = styled.Text`
   color: ${Colors.black};
-  font-size: 18px;
+  font-size: 14px;
   margin-bottom: 20px;
 `;
 

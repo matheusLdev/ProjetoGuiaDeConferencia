@@ -19,7 +19,7 @@ export const ImgStyled = styled.Image`
 export const HeaderTitle = styled.Text<{hasImage: boolean}>`
   width: ${({hasImage}) => (hasImage ? '250px' : 'auto')};
   font-family: ${Fonts.Roboto_serif_regular};
-  font-size: 32px;
+  font-size: 28px;
   color: ${Colors.black};
   text-align: center;
 `;

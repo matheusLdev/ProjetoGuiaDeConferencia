@@ -18,7 +18,7 @@ export const Container = styled.View`
 
 export const SubTitleText = styled.Text`
   color: ${Colors.black};
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   padding: 20px;
 `;

@@ -22,7 +22,7 @@ export const ContainerNavigation = styled.View`
 
 export const InfoText = styled.Text`
   color: ${Colors.red};
-  font-size: 16px;
+  font-size: 12px;
   text-align: center;
 `;
 

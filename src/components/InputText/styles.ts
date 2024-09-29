@@ -7,7 +7,7 @@ export const Container = styled.View`
 
 export const Label = styled.Text`
   color: ${Colors.black};
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 4px;
 `;
 
@@ -26,7 +26,7 @@ export const StyledTextInput = styled.TextInput.attrs({
 })`
   flex: 1;
   height: 50px;
-  font-size: 16px;
+  font-size: 14px;
   color: ${Colors.black};
 `;
 
