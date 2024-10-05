@@ -5,7 +5,7 @@ export const ButtonStyled = styled.TouchableOpacity<{color: string}>`
   background-color: ${({color}) => color || Colors.yellow};
   min-width: 140px;
   min-height: 50px;
-  padding: 10px 20px;
+  padding: 10px 12px;
   margin: 10px;
   border-radius: 30px;
   align-items: center;
